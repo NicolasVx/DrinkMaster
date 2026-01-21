@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Drink Master Quiz 🍹</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DrinkQuiz">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela Inicial -->
+        <div id="homeScreen" class="screen active">
+            <div class="logo">🍹</div>
+            <h1>Drink Master Quiz</h1>
+            <p class="subtitle">Teste seus conhecimentos sobre drinks!</p>
+            <button class="btn btn-primary" onclick="startGame()">Começar Jogo</button>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Acertos</span>
+                    <span class="stat-value" id="totalCorrect">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Jogadas</span>
+                    <span class="stat-value" id="totalPlayed">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela do Jogo -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <div class="game-info">
+                    <span id="currentQuestion">1</span> de <span id="totalQuestions">10</span>
+                </div>
+            </div>
+
+            <div class="drink-card">
+                <div class="drink-name" id="drinkName">Caipirinha</div>
+                <div class="drink-image">🍸</div>
+                <p class="instruction">Selecione os ingredientes corretos:</p>
+            </div>
+
+            <div class="ingredients-list" id="ingredientsList">
+                <!-- Ingredientes serão inseridos aqui via JavaScript -->
+            </div>
+
+            <div class="game-actions">
+                <button class="btn btn-secondary" onclick="skipDrink()">Pular ⏭️</button>
+                <button class="btn btn-primary" onclick="checkAnswer()">Verificar ✓</button>
+            </div>
+        </div>
+
+        <!-- Tela de Resultado -->
+        <div id="resultScreen" class="screen">
+            <div class="result-icon" id="resultIcon">✓</div>
+            <h2 id="resultTitle">Parabéns!</h2>
+            <div class="result-message" id="resultMessage"></div>
+            
+            <div class="correct-ingredients" id="correctIngredients">
+                <!-- Ingredientes corretos serão mostrados aqui -->
+            </div>
+
+            <div class="result-actions">
+                <button class="btn btn-secondary" onclick="nextDrink()">Próximo Drink ➔</button>
+            </div>
+        </div>
+
+        <!-- Tela Final -->
+        <div id="finalScreen" class="screen">
+            <div class="logo">🏆</div>
+            <h1>Parabéns!</h1>
+            <div class="final-score">
+                <p>Você completou o quiz!</p>
+                <div class="score-big">
+                    <span id="finalScore">0</span> / <span id="finalTotal">10</span>
+                </div>
+                <p class="score-percentage" id="scorePercentage">0%</p>
+            </div>
+            <button class="btn btn-primary" onclick="restartGame()">Jogar Novamente</button>
+            <button class="btn btn-secondary" onclick="goHome()">Menu Principal</button>
+        </div>
+    </div>
+
+    <script src="drinks-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
